@@ -2,9 +2,11 @@ package com.example.zhangdong.zdhavesome.webview;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import com.example.zhangdong.zdhavesome.R;
 import com.example.zhangdong.zdhavesome.webview.webClient.MyWebClient;
@@ -16,14 +18,15 @@ import com.example.zhangdong.zdhavesome.webview.webClient.MyWebClient;
  */
 public class WebActivity extends AppCompatActivity {
 
-    private static final String URL="https://www.baidu.com/";
+    private static final String URL = "https://www.baidu.com/";
+    private WebView myWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
 
-        WebView myWebView = (WebView) findViewById(R.id.my_webview);
+        myWebView = (WebView) findViewById(R.id.my_webview);
 
         initWeb(myWebView);
 
@@ -40,6 +43,8 @@ public class WebActivity extends AppCompatActivity {
         WebSettings mWebSettings = mWeb.getSettings();
         //设置是否支持JS
         mWebSettings.setJavaScriptEnabled(true);
+
+
         // 设置可以支持缩放
         mWebSettings.setSupportZoom(true);
         // 设置出现缩放工具
@@ -50,7 +55,39 @@ public class WebActivity extends AppCompatActivity {
         mWebSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         mWebSettings.setLoadWithOverviewMode(true);
         //覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
+        mWeb.addJavascriptInterface(new addBody(), "addBody");
         mWeb.setWebViewClient(new MyWebClient());
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && myWebView.canGoBack()) {
+            myWebView.goBack();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
+    //
+    final class addBody {
+        @JavascriptInterface
+        public void show(String html) {
+            Log.d("MY_INFO", "show: ================" + html);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (myWebView != null) {
+            myWebView.loadDataWithBaseURL(null, "", "text/html", "utf-8", null);
+            myWebView.clearHistory();
+
+            ((WebView) myWebView.getParent()).removeView(myWebView);
+            myWebView.destroy();
+            myWebView = null;
+        }
+        super.onDestroy();
     }
 }
 
