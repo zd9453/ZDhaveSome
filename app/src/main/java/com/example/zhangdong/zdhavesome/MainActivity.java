@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.zhangdong.zdhavesome.rongim.RongTestActivity;
 import com.example.zhangdong.zdhavesome.webview.WebActivity;
 
 /**
@@ -24,5 +25,10 @@ public class MainActivity extends AppCompatActivity {
     public void go1(View view) {
         Toast.makeText(this, "go1", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, WebActivity.class));
+    }
+
+    public void go2(View view) {
+        Toast.makeText(this, "go2", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, RongTestActivity.class));
     }
 }

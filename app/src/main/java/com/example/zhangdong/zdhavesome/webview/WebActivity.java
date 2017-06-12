@@ -83,7 +83,7 @@ public class WebActivity extends AppCompatActivity {
             myWebView.loadDataWithBaseURL(null, "", "text/html", "utf-8", null);
             myWebView.clearHistory();
 
-            ((WebView) myWebView.getParent()).removeView(myWebView);
+            myWebView.removeView(myWebView);
             myWebView.destroy();
             myWebView = null;
         }

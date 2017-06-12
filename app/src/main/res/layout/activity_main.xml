@@ -16,7 +16,10 @@
             android:onClick="go1"
             android:text="webView" />
 
-        <Button style="@style/my_button_style" />
+        <Button
+            style="@style/my_button_style"
+            android:onClick="go2"
+            android:text="RongIM" />
 
         <Button style="@style/my_button_style" />
 
