@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.example.zhangdong.zdhavesome.MainActivity">
+    tools:context="com.example.dongdongkeji.wangwangsocial.MainActivity">
 
 
     <LinearLayout
@@ -21,13 +21,25 @@
             android:onClick="go2"
             android:text="RongIM" />
 
-        <Button style="@style/my_button_style" />
+        <Button
+            style="@style/my_button_style"
+            android:onClick="go3"
+            android:text="S-B_N" />
 
-        <Button style="@style/my_button_style" />
+        <Button
+            style="@style/my_button_style"
+            android:onClick="go4"
+            android:text="animation" />
 
-        <Button style="@style/my_button_style" />
+        <Button
+            style="@style/my_button_style"
+            android:onClick="go5"
+            android:text="ShareSDK_login" />
 
-        <Button style="@style/my_button_style" />
+        <Button
+            style="@style/my_button_style"
+            android:onClick="go6"
+            android:text="DrawLayout" />
 
         <Button style="@style/my_button_style" />
 

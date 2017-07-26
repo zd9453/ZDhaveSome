@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.zhangdong.zdhavesome">
+    package="com.example.dongdongkeji.wangwangsocial">
 
     <!-- 权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- ShareSDK添加必要的权限 -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
+        android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -27,7 +39,7 @@
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.example.zhangdong.zdhavesome.FileProvider"
+            android:authorities="com.example.dongdongkeji.wangwangsocial.FileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -41,6 +53,7 @@
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
@@ -55,20 +68,84 @@
             android:screenOrientation="portrait"
             android:theme="@style/MyTheme"
             android:windowSoftInputMode="stateHidden|adjustResize">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="com.example.zhangdong.zdhavesome"
                     android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".rongim.ui.MyFriendListActivity"
             android:theme="@style/MyTheme" />
+        <activity android:name=".service.brodcasereciver.notify.DoThingActivity" />
+
+        <service android:name=".service.brodcasereciver.notify.service.MyService" />
+
+        <receiver
+            android:name=".service.brodcasereciver.notify.breadcase.MyBreadcasrReciver"
+            android:permission="@string/app_name">
+            <intent-filter>
+                <action android:name=".service.brodcasereciver.notify.breadcase.mybreadcasereciver" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".animation.AnimationActivity" />
+
+        <!-- ShareSDK的activity -->
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <data android:scheme="tencent1106099147" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- 调用新浪原生SDK，需要注册的回调activity -->
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- 集成line客户端登录授权，需要添如下格式的过滤器 -->
+            <intent-filter>
+                <data android:scheme="line.1477692153" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 微信分享回调 -->
+        <activity
+            android:name="cn.sharesdk.demo.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- 填写您从Mob开发者后台中得到的Appkey和AppSecret -->
+        <meta-data
+            android:name="Mob-AppKey"
+            android:value="1b93d370237d6" />
+        <meta-data
+            android:name="Mob-AppSecret"
+            android:value="b7112669c0952782f2ff520bbc68c3da" />
+
+        <activity android:name=".sharelogin.LoginActivity" />
+        <activity android:name=".drawlayout.DrawLayoutActivity"></activity>
     </application>
 
 </manifest>

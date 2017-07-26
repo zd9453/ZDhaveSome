@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
     defaultConfig {
-        applicationId "com.example.zhangdong.zdhavesome"
+        applicationId "com.dongdongkeji.wangwangsocial"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
@@ -23,11 +23,26 @@ android {
             jniLibs.srcDirs = ['src/main/libs']
         }
     }
+    //防止签名打包时融云里面国际化的东西报错
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':IMKit')
+    compile files('libs/MobCommons-2017.0608.1618.jar')
+    compile files('libs/MobTools-2017.0608.1618.jar')
+    compile files('libs/ShareSDK-Core-3.0.0.jar')
+    compile files('libs/ShareSDK-QQ-3.0.0.jar')
+    compile files('libs/ShareSDK-QZone-3.0.0.jar')
+    compile files('libs/ShareSDK-SinaWeibo-3.0.0.jar')
+    compile files('libs/ShareSDK-Wechat-3.0.0.jar')
+    compile files('libs/ShareSDK-Wechat-Core-3.0.0.jar')
+    compile files('libs/ShareSDK-Wechat-Favorite-3.0.0.jar')
+    compile files('libs/ShareSDK-Wechat-Moments-3.0.0.jar')
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

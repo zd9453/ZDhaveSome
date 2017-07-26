@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.dongdongkeji.wangwangsocial.service.brodcasereciver.notify.DoThingActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="开启服务做耗时操作，操作完成后广播更新UI并弹出通知" />
+
+    <ImageView
+        android:id="@+id/img_map"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/rc_no" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:onClick="startSer"
+        android:text="点击开启服务做网络耗时操作" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="stopSer"
+        android:text="点击停止服务" />
+
+    <ExpandableListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

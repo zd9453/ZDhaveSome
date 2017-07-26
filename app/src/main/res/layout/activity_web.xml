@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.zhangdong.zdhavesome.webview.WebActivity">
+    tools:context="com.example.dongdongkeji.wangwangsocial.webview.WebActivity">
 
 
     <TextView
